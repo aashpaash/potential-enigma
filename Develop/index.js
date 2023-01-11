@@ -1,39 +1,41 @@
 // TODO: Include packages needed for this application
 const inquire = require("inquirer");
-const fs = require("fs");
-const util = require("util"); 
+const fs = require('fs');
+const util = require('util');
+//const generateMarkdown = require('./generateMarkdown');
 
-const generateMarkdown = require("./utils/generateMarkdown");
+const generateMarkdown = require('./utils/generateMarkdown');
+const { default: inquirer } = require("inquirer");
 // TODO: Create an array of questions for user input
 const questions = [{
     type: "input",
-    message: "What is the name of this project?",
     name: "title",
+    message: "What is the name of this project?",
 
     type: "input",
-    message: "Please decribe your project",
     name: "description",
-
+    message: "Please decribe your project",
+    
     type: "input",
-    message: "What is the project's purpose?",
     name: "objective",
+    message: "What is the project's purpose?",
 
     type: "input",
-    message: "How can users test this project?",
-    name: "test",
-
-    type: "input",
-    message: "How can this project be used?",
     name: "usage",
+    message: "How can this project be used?",
 
     type: "input",
-    message: "What dependencies are needed to run this project?",
     name: "installation",
+    message: "What dependencies are needed to run this project?",
     default: "npm i",
 
     type: "input",
-    message: "Who all who contributed to this project",
     name: "contributors",
+    message: "Who all who contributed to this project",
+
+    type: "input",
+    name: "test",
+    message: "How can project be tested?",
 
     type: "list",
     message: "Select a license for this project",
@@ -42,16 +44,16 @@ const questions = [{
     ],
 
     type: "input",
-    message: "What has this project taught you?",
     name: "learn",
+    message: "What has this project taught you?",
 
     type: "input",
-    message: "What is your Github username?",
     name: "github",
+    message: "What is your Github username?",
 
     type: "input",
-    message: "What is your email address?",
     name: "email",
+    message: "What is your email address?",
 }];
 
 // TODO: Create a function to write README file
@@ -68,7 +70,10 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then(function);
+}
 
 // Function call to initialize app
 init();
